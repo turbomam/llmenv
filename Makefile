@@ -50,7 +50,7 @@ nmdc_materialized_patterns.yaml:
 nmdc_submission_schema.yaml:
 	wget https://raw.githubusercontent.com/microbiomedata/submission-schema/v10.7.0/src/nmdc_submission_schema/schema/nmdc_submission_schema.yaml
 
-established_subset_enums.yaml: nmdc_submission_schema.yaml
-	yq \
+established_subset_enums.json: nmdc_submission_schema.yaml
+	yq -o=json \
 	'{"enums": {"EnvBroadScaleSoilEnum": .enums.EnvBroadScaleSoilEnum, "EnvLocalScaleSoilEnum": .enums.EnvLocalScaleSoilEnum, "EnvMediumSoilEnum": .enums.EnvMediumSoilEnum}}' \
 	$< | cat > $@
