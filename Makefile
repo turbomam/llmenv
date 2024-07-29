@@ -25,6 +25,9 @@ mixs_extensions.yaml: mixs.yaml
 	yq e '.classes | with_entries(select(.value.is_a == "Extension") | .value |= del(.slots, .slot_usage))' $< | cat > $@
 	$(YAMLFMT_PATH) $@ # overwrites; # configured with .yamlfmt
 
+mixs_extensions.json: mixs_extensions.yaml
+	yq '.' -o=json $< | cat > $@
+
 biome-relationships.tsv:
 	$(RUN) runoak --input sqlite:obo:envo relationships .desc//p=i ENVO:00000428 > $@
 	# !!! pivot? include entailment? --include-entailed / --no-include-entailed; --non-redundant-entailed / --no-non-redundant-entailed
