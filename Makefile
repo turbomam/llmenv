@@ -43,3 +43,14 @@ biome-metadata.json: biome-metadata.yaml
 
 env_broad_scale.json: mixs.yaml
 	yq '.slots.env_broad_scale' -o=json $< | cat > $@
+
+nmdc_materialized_patterns.yaml:
+	wget https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v10.7.0/nmdc_schema/nmdc_materialized_patterns.yaml
+
+nmdc_submission_schema.yaml:
+	wget https://raw.githubusercontent.com/microbiomedata/submission-schema/v10.7.0/src/nmdc_submission_schema/schema/nmdc_submission_schema.yaml
+
+established_subset_enums.yaml: nmdc_submission_schema.yaml
+	yq \
+	'{"enums": {"EnvBroadScaleSoilEnum": .enums.EnvBroadScaleSoilEnum, "EnvLocalScaleSoilEnum": .enums.EnvLocalScaleSoilEnum, "EnvMediumSoilEnum": .enums.EnvMediumSoilEnum}}' \
+	$< | cat > $@
