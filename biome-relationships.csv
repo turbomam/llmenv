@@ -1,0 +1,235 @@
+subject,subject_label,predicate,predicate_label,object,object_label
+ENVO:00000428,biome,BFO:0000050,part of,ENVO:01000817,biosphere
+ENVO:00000428,biome,RO:0000056,participates in,ENVO:01001827,climactic ecological succession
+ENVO:00000428,biome,RO:0002507,determined by,PCO:0000002,ecological community
+ENVO:00000428,biome,rdfs:subClassOf,None,ENVO:01000813,astronomical body part
+ENVO:00000428,biome,rdfs:subClassOf,None,ENVO:01001110,ecosystem
+ENVO:00000446,terrestrial biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:00000446,terrestrial biome,rdfs:subClassOf,None,ENVO:01001790,terrestrial ecosystem
+ENVO:00000889,large river delta biome,BFO:0000050,part of,ENVO:00000887,large river biome
+ENVO:00000889,large river delta biome,BFO:0000051,has part,ENVO:00000101,delta
+ENVO:00000889,large river delta biome,rdfs:subClassOf,None,ENVO:01000253,freshwater river biome
+ENVO:00000890,small river biome,rdfs:subClassOf,None,ENVO:01000253,freshwater river biome
+ENVO:00000891,large freshwater lake biome,rdfs:subClassOf,None,ENVO:01000252,freshwater lake biome
+ENVO:00000893,xeric basin biome,BFO:0000051,has part,ENVO:01000598,freshwater spring
+ENVO:00000893,xeric basin biome,rdfs:subClassOf,None,ENVO:00000873,freshwater biome
+ENVO:00002030,aquatic biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:00002030,aquatic biome,rdfs:subClassOf,None,ENVO:01001787,aquatic ecosystem
+ENVO:01000004,concentration basin mediterranean sea biome,rdfs:subClassOf,None,ENVO:01000047,mediterranean sea biome
+ENVO:01000020,estuarine biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01000022,marine salt marsh biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01000023,marine pelagic biome,BFO:0000051,has part,ENVO:00001999,marine water body
+ENVO:01000023,marine pelagic biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01000024,marine benthic biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01000025,marine neritic benthic zone biome,rdfs:subClassOf,None,ENVO:01000024,marine benthic biome
+ENVO:01000027,marine abyssal zone biome,rdfs:subClassOf,None,ENVO:01000024,marine benthic biome
+ENVO:01000028,marine hadal zone biome,rdfs:subClassOf,None,ENVO:01000024,marine benthic biome
+ENVO:01000030,marine hydrothermal vent biome,rdfs:subClassOf,None,ENVO:01000024,marine benthic biome
+ENVO:01000032,neritic pelagic zone biome,rdfs:subClassOf,None,ENVO:01000023,marine pelagic biome
+ENVO:01000034,oceanic sea surface microlayer biome,rdfs:subClassOf,None,ENVO:01000033,oceanic pelagic zone biome
+ENVO:01000035,oceanic epipelagic zone biome,rdfs:subClassOf,None,ENVO:01000033,oceanic pelagic zone biome
+ENVO:01000036,oceanic mesopelagic zone biome,rdfs:subClassOf,None,ENVO:01000033,oceanic pelagic zone biome
+ENVO:01000037,oceanic bathypelagic zone biome,rdfs:subClassOf,None,ENVO:01000033,oceanic pelagic zone biome
+ENVO:01000038,oceanic abyssopelagic zone biome,rdfs:subClassOf,None,ENVO:01000033,oceanic pelagic zone biome
+ENVO:01000039,oceanic hadal pelagic zone biome,rdfs:subClassOf,None,ENVO:01000033,oceanic pelagic zone biome
+ENVO:01000040,oceanic benthopelagic zone biome,rdfs:subClassOf,None,ENVO:01000033,oceanic pelagic zone biome
+ENVO:01000041,neritic sea surface microlayer biome,rdfs:subClassOf,None,ENVO:01000032,neritic pelagic zone biome
+ENVO:01000046,marginal sea biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01000047,mediterranean sea biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01000047,mediterranean sea biome,rdfs:subClassOf,None,ENVO:01001833,mediterranean biome
+ENVO:01000048,ocean biome,RO:0002507,determined by,ENVO:00000015,ocean
+ENVO:01000048,ocean biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01000051,marine black smoker biome,rdfs:subClassOf,None,ENVO:01000030,marine hydrothermal vent biome
+ENVO:01000052,marine white smoker biome,rdfs:subClassOf,None,ENVO:01000030,marine hydrothermal vent biome
+ENVO:01000053,marine ultramafic hydrothermal vent biome,rdfs:subClassOf,None,ENVO:01000030,marine hydrothermal vent biome
+ENVO:01000054,marine basaltic hydrothermal vent biome,rdfs:subClassOf,None,ENVO:01000030,marine hydrothermal vent biome
+ENVO:01000123,marine sponge reef biome,rdfs:subClassOf,None,ENVO:01000029,marine reef biome
+ENVO:01000127,marine cold seep biome,BFO:0000051,has part,ENVO:01000263,cold seep
+ENVO:01000127,marine cold seep biome,rdfs:subClassOf,None,ENVO:01000024,marine benthic biome
+ENVO:01000128,dilution basin mediterranean sea biome,rdfs:subClassOf,None,ENVO:01000047,mediterranean sea biome
+ENVO:01000174,forest biome,rdfs:subClassOf,None,ENVO:00000446,terrestrial biome
+ENVO:01000174,forest biome,rdfs:subClassOf,None,ENVO:01001243,forest ecosystem
+ENVO:01000175,woodland biome,BFO:0000051,has part,ENVO:00000109,woodland area
+ENVO:01000175,woodland biome,rdfs:subClassOf,None,ENVO:00000446,terrestrial biome
+ENVO:01000177,grassland biome,rdfs:subClassOf,None,ENVO:00000446,terrestrial biome
+ENVO:01000177,grassland biome,rdfs:subClassOf,None,ENVO:01001206,grassland ecosystem
+ENVO:01000178,savanna biome,rdfs:subClassOf,None,ENVO:01000175,woodland biome
+ENVO:01000179,desert biome,RO:0002131,overlaps,ENVO:00000097,desert area
+ENVO:01000179,desert biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01000179,desert biome,rdfs:subClassOf,None,ENVO:01001780,desert ecosystem
+ENVO:01000180,tundra biome,rdfs:subClassOf,None,ENVO:00000446,terrestrial biome
+ENVO:01000180,tundra biome,rdfs:subClassOf,None,ENVO:01001370,tundra ecosystem
+ENVO:01000181,mangrove biome,BFO:0000051,has part,ENVO:00000057,mangrove swamp
+ENVO:01000181,mangrove biome,rdfs:subClassOf,None,ENVO:00000446,terrestrial biome
+ENVO:01000182,temperate desert biome,rdfs:subClassOf,None,ENVO:01000179,desert biome
+ENVO:01000182,temperate desert biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000183,tropical desert biome,rdfs:subClassOf,None,ENVO:01000179,desert biome
+ENVO:01000183,tropical desert biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000184,subtropical desert biome,rdfs:subClassOf,None,ENVO:01000179,desert biome
+ENVO:01000184,subtropical desert biome,rdfs:subClassOf,None,ENVO:01001832,subtropical biome
+ENVO:01000185,montane desert biome,rdfs:subClassOf,None,ENVO:01000179,desert biome
+ENVO:01000185,montane desert biome,rdfs:subClassOf,None,ENVO:01001836,montane biome
+ENVO:01000186,polar desert biome,rdfs:subClassOf,None,ENVO:01000179,desert biome
+ENVO:01000186,polar desert biome,rdfs:subClassOf,None,ENVO:01000339,polar biome
+ENVO:01000189,temperate savanna biome,rdfs:subClassOf,None,ENVO:01000178,savanna biome
+ENVO:01000189,temperate savanna biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000190,flooded savanna biome,rdfs:subClassOf,None,ENVO:01000178,savanna biome
+ENVO:01000191,subtropical grassland biome,rdfs:subClassOf,None,ENVO:01000177,grassland biome
+ENVO:01000191,subtropical grassland biome,rdfs:subClassOf,None,ENVO:01001809,subtropical grassland
+ENVO:01000191,subtropical grassland biome,rdfs:subClassOf,None,ENVO:01001832,subtropical biome
+ENVO:01000192,tropical grassland biome,rdfs:subClassOf,None,ENVO:01000177,grassland biome
+ENVO:01000192,tropical grassland biome,rdfs:subClassOf,None,ENVO:01001806,tropical grassland
+ENVO:01000192,tropical grassland biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000193,temperate grassland biome,rdfs:subClassOf,None,ENVO:01000177,grassland biome
+ENVO:01000193,temperate grassland biome,rdfs:subClassOf,None,ENVO:01001811,temperate grassland
+ENVO:01000193,temperate grassland biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000194,montane grassland biome,rdfs:subClassOf,None,ENVO:01000177,grassland biome
+ENVO:01000194,montane grassland biome,rdfs:subClassOf,None,ENVO:01001808,montane grassland
+ENVO:01000194,montane grassland biome,rdfs:subClassOf,None,ENVO:01001836,montane biome
+ENVO:01000195,flooded grassland biome,rdfs:subClassOf,None,ENVO:01000177,grassland biome
+ENVO:01000195,flooded grassland biome,rdfs:subClassOf,None,ENVO:01001807,flooded grassland
+ENVO:01000196,coniferous forest biome,rdfs:subClassOf,None,ENVO:01000174,forest biome
+ENVO:01000196,coniferous forest biome,rdfs:subClassOf,None,ENVO:01000433,needleleaf forest
+ENVO:01000197,broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000174,forest biome
+ENVO:01000197,broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000430,broadleaf forest
+ENVO:01000198,mixed forest biome,rdfs:subClassOf,None,ENVO:01000174,forest biome
+ENVO:01000198,mixed forest biome,rdfs:subClassOf,None,ENVO:01000431,mixed forest
+ENVO:01000200,tropical broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000197,broadleaf forest biome
+ENVO:01000200,tropical broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001792,tropical broadleaf forest
+ENVO:01000200,tropical broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000201,subtropical broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000197,broadleaf forest biome
+ENVO:01000201,subtropical broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001793,subtropical broadleaf forest
+ENVO:01000201,subtropical broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001832,subtropical biome
+ENVO:01000208,mediterranean woodland biome,rdfs:subClassOf,None,ENVO:01000222,subtropical woodland biome
+ENVO:01000208,mediterranean woodland biome,rdfs:subClassOf,None,ENVO:01001833,mediterranean biome
+ENVO:01000209,subtropical coniferous forest biome,rdfs:subClassOf,None,ENVO:01000196,coniferous forest biome
+ENVO:01000209,subtropical coniferous forest biome,rdfs:subClassOf,None,ENVO:01001804,subtropical forest
+ENVO:01000209,subtropical coniferous forest biome,rdfs:subClassOf,None,ENVO:01001832,subtropical biome
+ENVO:01000210,tropical coniferous forest biome,rdfs:subClassOf,None,ENVO:01000196,coniferous forest biome
+ENVO:01000210,tropical coniferous forest biome,rdfs:subClassOf,None,ENVO:01000399,tropical needleleaf forest
+ENVO:01000210,tropical coniferous forest biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000211,temperate coniferous forest biome,rdfs:subClassOf,None,ENVO:01000196,coniferous forest biome
+ENVO:01000211,temperate coniferous forest biome,rdfs:subClassOf,None,ENVO:01001805,temperate forest
+ENVO:01000211,temperate coniferous forest biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000212,temperate mixed forest biome,rdfs:subClassOf,None,ENVO:01000198,mixed forest biome
+ENVO:01000212,temperate mixed forest biome,rdfs:subClassOf,None,ENVO:01001796,temperate mixed forest
+ENVO:01000212,temperate mixed forest biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000213,subtropical shrubland biome,rdfs:subClassOf,None,ENVO:01000176,shrubland biome
+ENVO:01000213,subtropical shrubland biome,rdfs:subClassOf,None,ENVO:01001832,subtropical biome
+ENVO:01000215,temperate shrubland biome,rdfs:subClassOf,None,ENVO:01000176,shrubland biome
+ENVO:01000215,temperate shrubland biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000216,montane shrubland biome,rdfs:subClassOf,None,ENVO:01000176,shrubland biome
+ENVO:01000216,montane shrubland biome,rdfs:subClassOf,None,ENVO:01001836,montane biome
+ENVO:01000218,xeric shrubland biome,rdfs:subClassOf,None,ENVO:01000176,shrubland biome
+ENVO:01000219,anthropogenic terrestrial biome,rdfs:subClassOf,None,ENVO:00000446,terrestrial biome
+ENVO:01000219,anthropogenic terrestrial biome,rdfs:subClassOf,None,ENVO:01001828,anthropised ecosystem
+ENVO:01000220,tropical woodland biome,rdfs:subClassOf,None,ENVO:01000175,woodland biome
+ENVO:01000220,tropical woodland biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000221,temperate woodland biome,rdfs:subClassOf,None,ENVO:01000175,woodland biome
+ENVO:01000221,temperate woodland biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000222,subtropical woodland biome,rdfs:subClassOf,None,ENVO:01000175,woodland biome
+ENVO:01000222,subtropical woodland biome,rdfs:subClassOf,None,ENVO:01001832,subtropical biome
+ENVO:01000223,montane savanna biome,rdfs:subClassOf,None,ENVO:01000178,savanna biome
+ENVO:01000223,montane savanna biome,rdfs:subClassOf,None,ENVO:01001836,montane biome
+ENVO:01000224,mediterranean grassland biome,rdfs:subClassOf,None,ENVO:01000191,subtropical grassland biome
+ENVO:01000224,mediterranean grassland biome,rdfs:subClassOf,None,ENVO:01001810,mediterranean grassland
+ENVO:01000224,mediterranean grassland biome,rdfs:subClassOf,None,ENVO:01001833,mediterranean biome
+ENVO:01000225,subtropical dry broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000201,subtropical broadleaf forest biome
+ENVO:01000225,subtropical dry broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001801,subtropical dry broadleaf forest
+ENVO:01000228,tropical moist broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000200,tropical broadleaf forest biome
+ENVO:01000228,tropical moist broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001800,tropical moist broadleaf forest
+ENVO:01000229,mediterranean savanna biome,rdfs:subClassOf,None,ENVO:01000187,subtropical savanna biome
+ENVO:01000229,mediterranean savanna biome,rdfs:subClassOf,None,ENVO:01001833,mediterranean biome
+ENVO:01000245,cropland biome,rdfs:subClassOf,None,ENVO:01000219,anthropogenic terrestrial biome
+ENVO:01000245,cropland biome,rdfs:subClassOf,None,ENVO:01001244,cropland ecosystem
+ENVO:01000246,village biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01000246,village biome,rdfs:subClassOf,None,ENVO:01000773,village
+ENVO:01000247,rangeland biome,rdfs:subClassOf,None,ENVO:01000219,anthropogenic terrestrial biome
+ENVO:01000249,urban biome,rdfs:subClassOf,None,ENVO:01000248,dense settlement biome
+ENVO:01000252,freshwater lake biome,BFO:0000051,has part,ENVO:00000021,freshwater lake
+ENVO:01000252,freshwater lake biome,rdfs:subClassOf,None,ENVO:00000873,freshwater biome
+ENVO:01000253,freshwater river biome,BFO:0000051,has part,ENVO:01000297,freshwater river
+ENVO:01000253,freshwater river biome,rdfs:subClassOf,None,ENVO:00000873,freshwater biome
+ENVO:01000339,polar biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01000339,polar biome,rdfs:subClassOf,None,ENVO:01001703,polar environment
+ENVO:01000854,tropical marine coral reef biome,rdfs:subClassOf,None,ENVO:01000049,marine coral reef biome
+ENVO:01000854,tropical marine coral reef biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000856,temperate marginal sea biome,rdfs:subClassOf,None,ENVO:01000046,marginal sea biome
+ENVO:01000856,temperate marginal sea biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000857,temperate mediterranean sea biome,rdfs:subClassOf,None,ENVO:01000047,mediterranean sea biome
+ENVO:01000859,tropical marine upwelling biome,rdfs:subClassOf,None,ENVO:01000858,marine upwelling biome
+ENVO:01000859,tropical marine upwelling biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000860,temperate marine upwelling biome,rdfs:subClassOf,None,ENVO:01000858,marine upwelling biome
+ENVO:01000860,temperate marine upwelling biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01001230,tropical marginal sea biome,rdfs:subClassOf,None,ENVO:01000046,marginal sea biome
+ENVO:01001230,tropical marginal sea biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01001369,tidal mangrove shrubland,BFO:0000051,has part,ENVO:01000181,mangrove biome
+ENVO:01001369,tidal mangrove shrubland,BFO:0000067,contains process,ENVO:01001342,tidal flow process
+ENVO:01001369,tidal mangrove shrubland,rdfs:subClassOf,None,ENVO:01000176,shrubland biome
+ENVO:01001505,alpine tundra biome,rdfs:subClassOf,None,ENVO:01000180,tundra biome
+ENVO:01001505,alpine tundra biome,rdfs:subClassOf,None,ENVO:01001835,alpine biome
+ENVO:01001798,tropical mixed forest biome,rdfs:subClassOf,None,ENVO:01000198,mixed forest biome
+ENVO:01001798,tropical mixed forest biome,rdfs:subClassOf,None,ENVO:01001797,tropical mixed forest
+ENVO:01001798,tropical mixed forest biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01001830,tropical biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01001830,tropical biome,rdfs:subClassOf,None,ENVO:01001701,tropical environment
+ENVO:01001832,subtropical biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01001832,subtropical biome,rdfs:subClassOf,None,ENVO:01001702,subtropical environment
+ENVO:01001834,subpolar biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01001834,subpolar biome,rdfs:subClassOf,None,ENVO:01001704,subpolar environment
+ENVO:01001835,alpine biome,RO:0000086,has quality,ENVO:01000340,alpine
+ENVO:01001835,alpine biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01001837,subalpine biome,RO:0000086,has quality,ENVO:01000341,subalpine
+ENVO:01001837,subalpine biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01001838,arid biome,RO:0000086,has quality,ENVO:01000230,arid
+ENVO:01001838,arid biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:03605008,freshwater stream biome,rdfs:subClassOf,None,ENVO:00000873,freshwater biome
+ENVO:03605008,freshwater stream biome,rdfs:subClassOf,None,ENVO:03605009,freshwater stream ecosystem
+ENVO:00000447,marine biome,rdfs:subClassOf,None,ENVO:00002030,aquatic biome
+ENVO:00000447,marine biome,rdfs:subClassOf,None,ENVO:01001788,marine ecosystem
+ENVO:00000873,freshwater biome,rdfs:subClassOf,None,ENVO:00002030,aquatic biome
+ENVO:00000873,freshwater biome,rdfs:subClassOf,None,ENVO:01001789,freshwater ecosystem
+ENVO:00000887,large river biome,rdfs:subClassOf,None,ENVO:01000253,freshwater river biome
+ENVO:00000888,large river headwater biome,BFO:0000050,part of,ENVO:00000887,large river biome
+ENVO:00000888,large river headwater biome,BFO:0000051,has part,ENVO:00000153,headwater
+ENVO:00000888,large river headwater biome,rdfs:subClassOf,None,ENVO:01000253,freshwater river biome
+ENVO:00000892,small freshwater lake biome,rdfs:subClassOf,None,ENVO:01000252,freshwater lake biome
+ENVO:01000026,marine bathyal zone biome,rdfs:subClassOf,None,ENVO:01000024,marine benthic biome
+ENVO:01000029,marine reef biome,RO:0002507,determined by,ENVO:01000143,marine reef
+ENVO:01000029,marine reef biome,rdfs:subClassOf,None,ENVO:01000024,marine benthic biome
+ENVO:01000033,oceanic pelagic zone biome,rdfs:subClassOf,None,ENVO:01000023,marine pelagic biome
+ENVO:01000042,neritic epipelagic zone biome,rdfs:subClassOf,None,ENVO:01000032,neritic pelagic zone biome
+ENVO:01000043,neritic mesopelagic zone biome,rdfs:subClassOf,None,ENVO:01000032,neritic pelagic zone biome
+ENVO:01000045,epeiric sea biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01000049,marine coral reef biome,rdfs:subClassOf,None,ENVO:01000029,marine reef biome
+ENVO:01000050,marine subtidal rocky reef biome,rdfs:subClassOf,None,ENVO:01000029,marine reef biome
+ENVO:01000176,shrubland biome,rdfs:subClassOf,None,ENVO:00000446,terrestrial biome
+ENVO:01000187,subtropical savanna biome,rdfs:subClassOf,None,ENVO:01000178,savanna biome
+ENVO:01000187,subtropical savanna biome,rdfs:subClassOf,None,ENVO:01001832,subtropical biome
+ENVO:01000188,tropical savanna biome,rdfs:subClassOf,None,ENVO:01000178,savanna biome
+ENVO:01000188,tropical savanna biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000199,mediterranean forest biome,rdfs:subClassOf,None,ENVO:01000174,forest biome
+ENVO:01000199,mediterranean forest biome,rdfs:subClassOf,None,ENVO:01001791,mediterranean forest
+ENVO:01000199,mediterranean forest biome,rdfs:subClassOf,None,ENVO:01001833,mediterranean biome
+ENVO:01000202,temperate broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000197,broadleaf forest biome
+ENVO:01000202,temperate broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001794,temperate broadleaf forest
+ENVO:01000202,temperate broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001831,temperate biome
+ENVO:01000214,tropical shrubland biome,rdfs:subClassOf,None,ENVO:01000176,shrubland biome
+ENVO:01000214,tropical shrubland biome,rdfs:subClassOf,None,ENVO:01001830,tropical biome
+ENVO:01000217,mediterranean shrubland biome,rdfs:subClassOf,None,ENVO:01000213,subtropical shrubland biome
+ENVO:01000217,mediterranean shrubland biome,rdfs:subClassOf,None,ENVO:01001833,mediterranean biome
+ENVO:01000226,subtropical moist broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000201,subtropical broadleaf forest biome
+ENVO:01000226,subtropical moist broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001802,subtropical moist broadleaf forest
+ENVO:01000227,tropical dry broadleaf forest biome,rdfs:subClassOf,None,ENVO:01000200,tropical broadleaf forest biome
+ENVO:01000227,tropical dry broadleaf forest biome,rdfs:subClassOf,None,ENVO:01001799,tropical dry broadleaf forest
+ENVO:01000248,dense settlement biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01000248,dense settlement biome,rdfs:subClassOf,None,ENVO:01000658,dense settlement
+ENVO:01000250,subpolar coniferous forest biome,rdfs:subClassOf,None,ENVO:01000196,coniferous forest biome
+ENVO:01000250,subpolar coniferous forest biome,rdfs:subClassOf,None,ENVO:01001834,subpolar biome
+ENVO:01000858,marine upwelling biome,rdfs:subClassOf,None,ENVO:00000447,marine biome
+ENVO:01001831,temperate biome,rdfs:subClassOf,None,ENVO:00000428,biome
+ENVO:01001831,temperate biome,rdfs:subClassOf,None,ENVO:01001705,temperate environment
+ENVO:01001833,mediterranean biome,RO:0000086,has quality,ENVO:01000207,mediterranean
+ENVO:01001833,mediterranean biome,rdfs:subClassOf,None,ENVO:01001832,subtropical biome
+ENVO:01001836,montane biome,RO:0000086,has quality,ENVO:01000342,montane
+ENVO:01001836,montane biome,rdfs:subClassOf,None,ENVO:00000428,biome

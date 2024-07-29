@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "llmenv"
+version = "0.1.0"
+description = ""
+authors = ["Mark A. Miller <MAM@lbl.gov>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+llm = "^0.15"
+linkml-map = "^0.3.7"
+litellm = "^1.41.28"
+oaklib = "^0.6.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
