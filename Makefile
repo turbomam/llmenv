@@ -9,6 +9,10 @@ envo.ttl: envo.owl
 	robot convert --input $< --output $@
 	# more amenable to processing with LLMs? But still too big!
 
+envo.ofn: envo.owl
+	robot convert --input $< --output $@
+	# for runoak axioms?
+
 envo.json: envo.owl
 	robot convert --input $< --output $@
 	# process with yq or jq? # would leave danglers

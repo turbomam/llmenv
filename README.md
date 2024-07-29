@@ -33,29 +33,33 @@ runoak --input sqlite:obo:envo term-metadata .desc//p=i ENVO:00000428 > biome-me
 
 runoak --input sqlite:obo:envo aliases 'biome'
 runoak --input sqlite:obo:envo ancestors 'biome'
-runoak --input sqlite:obo:envo axioms 'biome' # NotImplementedError requires OFN
 runoak --input sqlite:obo:envo definitions 'biome' 
 runoak --input sqlite:obo:envo descendants 'biome' 
-runoak --input sqlite:obo:envo disjoints 'biome' --autolabel -O csv # biome is disjoint from both ecoregion and ecozone # additional single-blank-node disjoints?!
 runoak --input sqlite:obo:envo info 'biome'
 runoak --input sqlite:obo:envo labels 'biome' 
 runoak --input sqlite:obo:envo languages
 runoak --input sqlite:obo:envo leafs
 runoak --input sqlite:obo:envo obsoletes
-runoak --input sqlite:obo:envo paths  -p i,p biosphere 'polar biome' # reports results but then says no paths found
 runoak --input sqlite:obo:envo prefixes
-runoak --input sqlite:obo:envo roots # why are hail and CL:0000000 reported?
 runoak --input sqlite:obo:envo siblings 'aquatic biome'
-runoak --input sqlite:obo:envo singletons
-runoak --input sqlite:obo:envo statistics # ERRORS
-runoak --input sqlite:obo:envo subsets # output and ERRORS
-runoak --input sqlite:obo:envo term-categories biome # nothing
-runoak --input sqlite:obo:envo term-subsets biome # nothing
 runoak --input sqlite:obo:envo terms
 runoak --input sqlite:obo:envo tree  biome # up by default
 runoak --input sqlite:obo:envo usages  biome
 ```
 
+
+## Needs followup
+```
+runoak --input envo.ofn axioms 'biome' # NotImplementedError requires OFN... but still getting ERROR:root:function AnnotationAssertion(oboInOwl:hasExactSynonym, obo:FOODON_00001014, yoghurt) TypeError: Type mismatch between en-br (type: <class 'str'> and [<class 'funowl.general_definitions.LanguageTag'>, <class 'NoneType'>]
+runoak --input sqlite:obo:envo disjoints 'biome' --autolabel -O csv # biome is disjoint from both ecoregion and ecozone # additional single-blank-node disjoints?!
+runoak --input sqlite:obo:envo paths  -p i,p biosphere 'polar biome' # reports results but then says no paths found
+runoak --input sqlite:obo:envo roots # why are hail and CL:0000000 reported?
+runoak --input sqlite:obo:envo singletons # do these results make sense?
+runoak --input sqlite:obo:envo statistics # ERRORS
+runoak --input sqlite:obo:envo subsets # output and ERRORS
+runoak --input sqlite:obo:envo term-categories biome # nothing
+runoak --input sqlite:obo:envo term-subsets biome # nothing```
+```
 
 ## Haven't goten these to work yet
 __May not be relevant for MIxS EnvO tasks__
