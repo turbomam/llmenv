@@ -33,11 +33,26 @@ biome-metadata.yaml:
 biome-metadata.json: biome-metadata.yaml
 	yq ea '[.]' $< -o=json | cat > $@
 
+environmental-materials-relationships.tsv:
+	$(RUN) runoak --input sqlite:obo:envo relationships .desc//p=i ENVO:00010483 > $@
+
+environmental-materials-metadata.yaml:
+	$(RUN) runoak --input sqlite:obo:envo term-metadata .desc//p=i ENVO:00010483 > $@
+
+environmental-materials-metadata.json: environmental-materials-metadata.yaml
+	yq ea '[.]' $< -o=json | cat > $@
+
 ####
 
 mixs.yaml:
 	# preferable to use a tagged release, but theres good stuff in this commit that hasn't been released yet
 	wget https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/b0b1e03b705cb432d08914c686ea820985b9cb20/src/mixs/schema/mixs.yaml
+
+mixs.json: mixs.yaml
+	yq '.' -o=json $< | jq -c | cat > $@
+
+mixs_extensions_with_slots.json: mixs.yaml
+	yq -o=json e '.classes | with_entries(select(.value.is_a == "Extension") | .value |= del(.slot_usage))' $< | cat > $@
 
 mixs_extensions.yaml: mixs.yaml
 	yq e '.classes | with_entries(select(.value.is_a == "Extension") | .value |= del(.slots, .slot_usage))' $< | cat > $@
@@ -46,8 +61,12 @@ mixs_extensions.yaml: mixs.yaml
 mixs_extensions.json: mixs_extensions.yaml
 	yq '.' -o=json $< | cat > $@
 
-env_broad_scale.json: mixs.yaml
-	yq '.slots.env_broad_scale' -o=json $< | cat > $@
+#env_broad_scale.json: mixs.yaml
+#	yq '.slots.env_broad_scale' -o=json $< | cat > $@
+
+mixs_env_triad.json: mixs.yaml
+	yq e -o=json '{"slots": {"env_broad_scale": .slots.env_broad_scale, "env_local_scale": .slots.env_local_scale, "env_medium": .slots.env_medium}}' $< | cat > $@
+
 
 ####
 
@@ -88,6 +107,10 @@ sty-11-zs2syx06_study.json: # doesn't work with wget ?!?!?!
 		'https://api.microbiomedata.org/nmdcschema/ids/nmdc%3Asty-11-zs2syx06' \
 		-H 'accept: application/json' > $@
 
+sty-11-zs2syx06_biosample_json_to_context.tsv: sty-11-zs2syx06_biosamples.json
+	$(RUN) python biosample_json_to_context_tsv.py \
+		--input-file $< \
+		--output-file $@
 
 # soil studies recommended by Montana:
 # - https://data.microbiomedata.org/details/study/nmdc:sty-11-dcqce727 see doi:10.1371/journal.pone.0228165
