@@ -1,0 +1,41 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX envo: <http://purl.obolibrary.org/obo/ENVO_>
+
+# in ubergraph named graph http://purl.obolibrary.org/obo/envo/envo-base.owl
+
+SELECT DISTINCT ?biome ?biomeLabel
+WHERE {
+  {
+    # Include terrestrial biome and its immediate subclasses
+    ?biome rdfs:subClassOf* envo:00000446 .
+    ?biome rdfs:subClassOf envo:00000446 .
+  } UNION {
+    # Include climate-related biomes
+    ?biome rdfs:subClassOf* envo:01000339 .
+  } UNION {
+    # Include anthropogenic terrestrial biome and its immediate subclasses
+    ?biome rdfs:subClassOf* envo:01000219 .
+    ?biome rdfs:subClassOf envo:01000219 .
+  } UNION {
+    # Include immediate subclasses of major terrestrial biomes
+    VALUES ?majorBiome { 
+      envo:01000174  # forest biome
+      envo:01000177  # grassland biome
+      envo:01000176  # shrubland biome
+      envo:01000175  # woodland biome
+      envo:01000179  # desert biome
+      envo:01000180  # tundra biome
+    }
+    ?biome rdfs:subClassOf ?majorBiome .
+  }
+  
+  # Exclude aquatic biomes
+  FILTER NOT EXISTS { ?biome rdfs:subClassOf* envo:00000447 } # marine biome
+  FILTER NOT EXISTS { ?biome rdfs:subClassOf* envo:00000873 } # freshwater biome
+  
+  # Get the label for each biome
+  ?biome rdfs:label ?biomeLabel .
+}
+ORDER BY ?biomeLabel
+limit 999

@@ -21,11 +21,12 @@ def get_biomes():
     biomes = set()
 
     for biome in major_biomes:
-        biomes.update(adapter.subclass_of(biome))
+        # Use descendants to get all subclasses (including self)
+        biomes.update(adapter.descendants(biome, reflexive=True))
 
     # Remove aquatic biomes
-    aquatic_biomes = set(adapter.subclass_of('ENVO:00000447'))  # marine biome
-    aquatic_biomes.update(adapter.subclass_of('ENVO:00000873'))  # freshwater biome
+    aquatic_biomes = set(adapter.descendants('ENVO:00000447', reflexive=True))  # marine biome
+    aquatic_biomes.update(adapter.descendants('ENVO:00000873', reflexive=True))  # freshwater biome
     biomes = biomes - aquatic_biomes
 
     return biomes

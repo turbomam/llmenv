@@ -1,0 +1,35 @@
+##many prefixes provided for free
+#PREFIX ENVO: <http://purl.obolibrary.org/obo/ENVO_>
+#SELECT distinct ?biome
+#WHERE {
+#    graph <http://purl.obolibrary.org/obo/envo/envo-base.owl> {
+#        {
+#            ?biome rdfs:subClassOf+ ENVO:00000428 .
+#            # biome
+#        } minus {
+#            ?biome rdfs:subClassOf* ENVO:00002030
+#        } # aquatic biome
+#    }
+#    #  OPTIONAL {
+#    #    ?biome rdfs:label ?label
+#    #  } # runoak query gives labels for free by default
+#}
+#order by ?biome
+#limit 999 # ubergraph will add a limit if we don't
+#
+## foodon asserts that some climate zones are biomes!
+#
+##WHERE {
+##  ?biome rdfs:subClassOf+ ENVO:00000428 .
+##  filter(strstarts(str(?biome), "http://purl.obolibrary.org/obo/ENVO_"))
+##} # 128
+
+PREFIX ENVO: <http://purl.obolibrary.org/obo/ENVO_>
+SELECT distinct *
+WHERE {
+    ?biome rdfs:subClassOf+ ENVO:00000428 .
+    minus {
+        ?biome rdfs:subClassOf+ ENVO:00002030 .
+    }
+    filter(strstarts(str(?biome), "http://purl.obolibrary.org/obo/ENVO_"))
+}
