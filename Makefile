@@ -17,6 +17,9 @@ envo.json: envo.owl
 	robot convert --input $< --output $@
 	# process with yq or jq? # would leave danglers
 
+
+# getting fragments of EnvO because the whole thing is too large to feed into an LLM
+# our guideline is that env_broad_scale should be answered with an EnvO biome subclass
 biome-relationships.tsv:
 	$(RUN) runoak --input sqlite:obo:envo relationships .desc//p=i ENVO:00000428 > $@
 	# !!! pivot? include entailment? --include-entailed / --no-include-entailed; --non-redundant-entailed / --no-non-redundant-entailed
@@ -33,14 +36,20 @@ biome-metadata.yaml:
 biome-metadata.json: biome-metadata.yaml
 	yq ea '[.]' $< -o=json | cat > $@
 
+# our guideline is that env_medium should be answered with an EnvO biome subclass
 environmental-materials-relationships.tsv:
 	$(RUN) runoak --input sqlite:obo:envo relationships .desc//p=i ENVO:00010483 > $@
+
+environmental-materials-relationships.csv: environmental-materials-relationships.tsv
+	sed 's/\t/,/g' $< > $@
 
 environmental-materials-metadata.yaml:
 	$(RUN) runoak --input sqlite:obo:envo term-metadata .desc//p=i ENVO:00010483 > $@
 
 environmental-materials-metadata.json: environmental-materials-metadata.yaml
 	yq ea '[.]' $< -o=json | cat > $@
+
+# the guidance for env_local_scale is less concreted so I am skipping for now.
 
 ####
 
@@ -51,6 +60,7 @@ mixs.yaml:
 mixs.json: mixs.yaml
 	yq '.' -o=json $< | jq -c | cat > $@
 
+# getting fragments of MIxS because the whole thing is too large to feed into an LLM
 mixs_extensions_with_slots.json: mixs.yaml
 	yq -o=json e '.classes | with_entries(select(.value.is_a == "Extension") | .value |= del(.slot_usage))' $< | cat > $@
 
@@ -61,15 +71,13 @@ mixs_extensions.yaml: mixs.yaml
 mixs_extensions.json: mixs_extensions.yaml
 	yq '.' -o=json $< | cat > $@
 
-#env_broad_scale.json: mixs.yaml
-#	yq '.slots.env_broad_scale' -o=json $< | cat > $@
-
 mixs_env_triad.json: mixs.yaml
 	yq e -o=json '{"slots": {"env_broad_scale": .slots.env_broad_scale, "env_local_scale": .slots.env_local_scale, "env_medium": .slots.env_medium}}' $< | cat > $@
 
 
 ####
 
+# get fragments of the NMDC schema(s)
 nmdc_materialized_patterns.yaml:
 	wget https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v10.7.0/nmdc_schema/nmdc_materialized_patterns.yaml
 
@@ -81,6 +89,8 @@ established_value_sets_from_schema.json: nmdc_submission_schema.yaml
 	'{"enums": {"EnvBroadScaleSoilEnum": .enums.EnvBroadScaleSoilEnum, "EnvLocalScaleSoilEnum": .enums.EnvLocalScaleSoilEnum, "EnvMediumSoilEnum": .enums.EnvMediumSoilEnum}}' \
 	$< | cat > $@ # ~ 48
 
+
+# get fragments of the NMDC production MongoDB Study and Biosample contents
 nmdc_production_studies.json:
 	wget -O $@.bak https://api.microbiomedata.org/nmdcschema/study_set?max_page_size=999999
 	yq '.' -o=json $@.bak | cat > $@
@@ -90,6 +100,17 @@ nmdc_production_biosamples.json:
 	wget -O $@ https://api.microbiomedata.org/nmdcschema/biosample_set?max_page_size=999999
 	yq '.' -o=json $@ | cat > $@.pretty.json
 
+nmdc_production_biosamples_5pct.json: nmdc_production_biosamples.json
+	$(RUN) python random_sample_resources.py \
+		--input_file $< \
+		--output_file $@ \
+		--sample_percentage 5
+
+nmdc_production_biosamples_env_package.json:
+	curl -X 'GET' \
+		'https://api.microbiomedata.org/nmdcschema/biosample_set?max_page_size=999999&projection=env_package' \
+		-H 'accept: application/json' > $@
+	yq '.' -o=json $@ | cat > $@.pretty.json # ENVO:00001998is also soil
 
 sty-11-33fbta56_biosamples.json:
 	wget -O $@ https://api.microbiomedata.org/nmdcschema/biosample_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-33fbta56%22%7D&max_page_size=999999
@@ -108,6 +129,11 @@ sty-11-zs2syx06_study.json: # doesn't work with wget ?!?!?!
 		-H 'accept: application/json' > $@
 
 sty-11-zs2syx06_biosample_json_to_context.tsv: sty-11-zs2syx06_biosamples.json
+	$(RUN) python biosample_json_to_context_tsv.py \
+		--input-file $< \
+		--output-file $@
+
+nmdc_production_biosamples_json_to_context.tsv: nmdc_production_biosamples.json
 	$(RUN) python biosample_json_to_context_tsv.py \
 		--input-file $< \
 		--output-file $@
@@ -141,6 +167,23 @@ clean: clean-intermediates
 	rm -rf *.csv *.owl *.ttl *.ofn *.json
 
 clean-intermediates:
+	mv filename-to-content-prompt-specification.yaml filename-to-content-prompt-specification.yaml.keep
 	rm -rf *.tsv *.yaml
+	mv filename-to-content-prompt-specification.yaml.keep filename-to-content-prompt-specification.yaml
 
-all: clean biome-relationships.csv biome-metadata.json mixs_extensions.json env_broad_scale.json established_subset_enums.json
+####
+
+filename-to-content-prompt.json:
+	$(RUN) python filename-to-content-prompt.py
+
+# 4o, gemini-1.5-pro-latest, claude-3-5-sonnet-20240620
+get-response: filename-to-content-prompt.json
+	cat $< | $(RUN) llm prommpt --model gemini-1.5-pro-latest
+
+all: clean biome-relationships.csv biome-metadata.json \
+environmental-materials-relationships.csv environmental-materials-metadata.json \
+mixs_extensions.json mixs_extensions_with_slots.json \
+mixs_env_triad.json \
+established_value_sets_from_schema.json nmdc_production_studies.json nmdc_production_biosamples.json \
+nmdc_production_biosamples_5pct.json nmdc_production_biosamples_json_to_context.tsv \
+biome_minus_aquatic_rq.tsv biome_minus_aquatic_oaklib.tsv biome_minus_aquatic_runoak.tsv
