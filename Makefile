@@ -160,8 +160,11 @@ biome_minus_aquatic_rq.tsv: biome_minus_aquatic.rq
 biome_minus_aquatic_oaklib.tsv:
 	$(RUN) python biome_minus_aquatic_oaklib.py > $@ # ~ 72 classes
 
-biome_minus_aquatic_runoak.tsv:
+biome_minus_aquatic_runoak.txt:
 	$(RUN) runoak --input sqlite:obo:envo info .desc//p=i ENVO:00000428  .not .desc//p=i ENVO:00002030 > $@ # ~ 72
+
+biome_minus_aquatic_runoak.tsv:
+	$(RUN) runoak --input sqlite:obo:envo info --output-type tsv  .desc//p=i ENVO:00000428 .not .desc//p=i ENVO:00002030  > $@
 
 clean: clean-intermediates
 	rm -rf *.csv *.owl *.ttl *.ofn *.json
@@ -231,3 +234,20 @@ biosample_set.xml.gz:
 biosample_set.xml: biosample_set.xml.gz
 	# keep original
 	gunzip -k $<
+
+ncbi_biosamples_context_value_counts.csv:
+	$(RUN) python count_biosample_context_vals_from_postgres.py \
+		--output-file $@
+
+ncbi_biosamples_context_value_counts_normalized.csv: ncbi_biosamples_context_value_counts.csv
+	$(RUN) python normalize_envo_data.py \
+		--count-col-name total_count \
+		--input-file $< \
+		--ontology-prefix ENVO \
+		--output-file $@ \
+		--val-col-name value
+
+ncbi_biosamples_context_value_counts_failures.csv: ncbi_biosamples_context_value_counts_normalized.csv
+	$(RUN) python find_envo_present_no_curie_extracted.py \
+		--input-file $< \
+		--output-file $@

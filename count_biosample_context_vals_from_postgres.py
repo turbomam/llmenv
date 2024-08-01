@@ -10,7 +10,8 @@ load_dotenv('local/.env')
 
 
 @click.command()
-@click.option('--output-file', type=str, default='combined_counts.csv', help='Output CSV file name.')
+@click.option('--output-file', type=str, default='ncbi_biosamples_context_value_counts.csv',
+              help='Output CSV file name.')
 def main(output_file: str) -> None:
     """
     Main function to fetch and write data.

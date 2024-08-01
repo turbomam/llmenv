@@ -40,19 +40,20 @@ def main(input_file, output_file, ontology_prefix, additional_column_name, addit
 
 def normalize_text(text: str, curie: str) -> str:
     """
-    Normalizes the textual label by removing CURIEs, brackets, leading underscores, and trimming whitespace.
+    Normalizes the textual label by removing CURIEs, brackets, leading underscores, exclamation points,
+    and trimming whitespace.
 
     Args:
         text: The raw label text.
         curie: The extracted CURIE to be removed from the text.
 
     Returns:
-        A normalized label string without CURIEs and brackets.
+        A normalized label string without CURIEs, brackets, and exclamation points.
     """
     # Remove the specific CURIE and any enclosing brackets or parentheses
     text = re.sub(rf'[\[\]()]*{re.escape(curie)}[\[\]()]*', '', text)
-    # Remove leading underscores and trim whitespace
-    text = re.sub(r'^_+', '', text).strip()
+    # Remove leading underscores, exclamation points, and trim whitespace
+    text = re.sub(r'^_+|!+', '', text).strip()
     return text
 
 
