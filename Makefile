@@ -163,6 +163,15 @@ biome_minus_aquatic_oaklib.tsv:
 biome_minus_aquatic_runoak.txt:
 	$(RUN) runoak --input sqlite:obo:envo info .desc//p=i ENVO:00000428  .not .desc//p=i ENVO:00002030 > $@ # ~ 72
 
+envo_info.txt:
+	$(RUN) runoak --input sqlite:obo:envo info  .desc//p=i continuant > $@
+
+envo_info.csv: envo_info.txt
+	$(RUN) python normalize_envo_data.py \
+			--input-file $< \
+			--ontology-prefix ENVO \
+			--output-file $@
+
 biome_minus_aquatic_runoak.tsv:
 	$(RUN) runoak --input sqlite:obo:envo info --output-type tsv  .desc//p=i ENVO:00000428 .not .desc//p=i ENVO:00002030  > $@
 
@@ -251,3 +260,13 @@ ncbi_biosamples_context_value_counts_failures.csv: ncbi_biosamples_context_value
 	$(RUN) python find_envo_present_no_curie_extracted.py \
 		--input-file $< \
 		--output-file $@
+
+ncbi_biosamples_context_value_counts_real_labels.csv:
+	$(RUN) python merge_in_reference_data.py \
+		--keep-file ncbi_biosamples_context_value_counts_normalized.csv \
+		--keep-key normalized_curie \
+		--reference-file envo_info.csv \
+		--reference-key normalized_curie \
+		--reference-addition normalized_label \
+		--addition-rename real_label \
+		--merged-file $@
