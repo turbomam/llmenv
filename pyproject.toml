@@ -12,6 +12,7 @@ linkml-map = "^0.3.7"
 litellm = "^1.41.28"
 oaklib = "^0.6.12"
 xmltodict = "^0.13.0"
+psycopg2-binary = "^2.9.9"
 
 
 [build-system]
