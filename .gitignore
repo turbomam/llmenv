@@ -1,2 +1,8 @@
+# Ignore local directory
+local/
+
+# Ignore all .env files
+**/*.env
+
 .idea
 yamlfmt
