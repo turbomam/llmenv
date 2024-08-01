@@ -213,3 +213,21 @@ mixs_env_triad.json \
 established_value_sets_from_schema.json nmdc_production_studies.json nmdc_production_biosamples.json \
 nmdc_production_biosamples_5pct.json nmdc_production_biosamples_json_to_context.tsv \
 biome_minus_aquatic_rq.tsv biome_minus_aquatic_oaklib.tsv biome_minus_aquatic_runoak.tsv
+
+
+nmdc_submission_schema_enums_keys.txt: nmdc_submission_schema.yaml
+	yq eval '.enums | keys | .[]' $< | sort  > $@
+
+
+EnvBroadScaleSoilEnum.pvs_keys.txt: nmdc_submission_schema.yaml
+	yq eval '.enums.EnvBroadScaleSoilEnum.permissible_values | keys | .[]' $< | cat > $@
+
+bioproject.xml: # 3 GB; 2 minutes at 30MB/s
+	wget https://ftp.ncbi.nlm.nih.gov/bioproject/bioproject.xml
+
+biosample_set.xml.gz:
+	wget https://ftp.ncbi.nlm.nih.gov/biosample/biosample_set.xml.gz
+
+biosample_set.xml: biosample_set.xml.gz
+	# keep original
+	gunzip -k $<
