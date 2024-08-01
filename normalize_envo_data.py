@@ -38,17 +38,20 @@ def main(input_file, output_file, ontology_prefix, additional_column_name, addit
     click.echo(f"Data processed and written to {output_file}")
 
 
-def normalize_text(text: str) -> str:
+def normalize_text(text: str, curie: str) -> str:
     """
-    Normalizes the textual label by removing leading underscores and trimming whitespace.
+    Normalizes the textual label by removing CURIEs, brackets, and trimming whitespace.
 
     Args:
         text: The raw label text.
+        curie: The extracted CURIE to be removed from the text.
 
     Returns:
-        A normalized label string.
+        A normalized label string without CURIEs and brackets.
     """
-    return re.sub(r'^[_\s]+', '', text).strip()
+    # Remove the specific CURIE and any enclosing brackets or parentheses
+    text = re.sub(rf'[\[\]()]*{re.escape(curie)}[\[\]()]*', '', text)
+    return text.strip()
 
 
 def normalize_curie(curie: str, prefix: str) -> str:
@@ -88,12 +91,12 @@ def process_csv(input_file, ontology_prefix: str, val_col_name: str, count_col_n
                 for match in curie_matches:
                     raw_curie = match.group(0)
                     normalized_curie = normalize_curie(raw_curie, ontology_prefix)
-                    label_part = re.sub(rf'{re.escape(raw_curie)}', '', portion).strip()
-                    normalized_label = normalize_text(label_part)
+                    label_part = re.sub(rf'\s*[\[\]()]*{re.escape(raw_curie)}[\[\]()]*\s*', '', portion).strip()
+                    normalized_label = normalize_text(label_part, raw_curie)
                     data.append((raw_value, portion, normalized_curie, normalized_label, count))
             else:
                 # Append a row even if CURIE is not found but prefix is present
-                data.append((raw_value, portion, '', normalize_text(portion), count))
+                data.append((raw_value, portion, '', normalize_text(portion, ''), count))
 
     return data
 
@@ -129,13 +132,13 @@ def process_lines(lines: List[str], ontology_prefix: str) -> List[Tuple[str, str
             curie_match = re.search(rf'(\[{prefix_pattern}\]|\b{prefix_pattern}\b)', portion)
             if curie_match:
                 raw_curie = curie_match.group(1)
-                label_part = re.sub(rf'(\[{prefix_pattern}\]|\b{prefix_pattern}\b)', '', portion)
+                label_part = re.sub(rf'\s*[\[\]()]*{re.escape(raw_curie)}[\[\]()]*\s*', '', portion)
             else:
                 raw_curie = ''
                 label_part = portion
 
             normalized_curie = normalize_curie(raw_curie, ontology_prefix)
-            normalized_label = normalize_text(label_part.split('!')[-1] if '!' in label_part else label_part)
+            normalized_label = normalize_text(label_part, raw_curie)
             data.append((original_line, portion, normalized_curie, normalized_label))
 
     return data
