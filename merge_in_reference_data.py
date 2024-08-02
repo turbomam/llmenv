@@ -1,7 +1,6 @@
 import click
 import pandas as pd
 from typing import Tuple, Optional
-from pathlib import Path
 
 pd.set_option('display.max_columns', None)
 
@@ -16,14 +15,13 @@ pd.set_option('display.max_columns', None)
 @click.option('--reference-addition', type=str, required=True,
               help='Name of the additional column from reference file to include in merge')
 @click.option('--addition-rename', type=str, required=True,
-              help='')
+              help='Name to rename the additional column in the merged file')
 @click.option('--merged-file', type=click.Path(), required=True, help='Path to save the merged CSV file')
 def process_csvs(keep_file: str, reference_file: str, keep_key: str, reference_key: str, reference_addition: str,
                  merged_file: str, addition_rename: str) -> None:
     """
-    Read two CSV files (keep and reference), split each based on whether specified key columns are null or blank,
-    merge the non-null DataFrames with a specified additional column from the reference file,
-    add back null rows from the keep file, and save the result.
+    Read two CSV files (keep and reference), merge based on key columns, measure label similarity using Jaccard distance,
+    and save the merged result with similarity metrics.
 
     Args:
         keep_file (str): Path to the keep CSV file.
@@ -39,46 +37,27 @@ def process_csvs(keep_file: str, reference_file: str, keep_key: str, reference_k
     # Process keep file
     keep_notnull, keep_null = process_file(keep_file, keep_key, "keep")
 
-    print(keep_notnull)
-    print(keep_null)
-
-    reference_notnull, reference_null = process_file(reference_file, reference_key, "keep")
+    reference_notnull, reference_null = process_file(reference_file, reference_key, "reference")
     reference_notnull = reference_notnull.rename(columns={reference_addition: addition_rename})
 
     reference_notnull = reference_notnull[[reference_key, addition_rename]]
 
-    print(reference_notnull)
-    print(reference_null)
-
     merged_df = pd.merge(keep_notnull, reference_notnull, left_on=keep_key, right_on=reference_key, how='left')
-    print(merged_df)
 
+    # Calculate Jaccard distance
+    merged_df['jaccard_distance'] = merged_df.apply(
+        lambda row: jaccard_distance(
+            str(row['normalized_label']) if pd.notna(row['normalized_label']) else None,
+            str(row[addition_rename]) if pd.notna(row[addition_rename]) else None
+        ),
+        axis=1
+    )
+
+    # Concatenate with null rows and save
     final_df = pd.concat([merged_df, keep_null], ignore_index=True)
 
-    print(final_df)
-
     final_df.to_csv(merged_file, index=False)
-
-    # # Process reference file
-    # reference_df = pd.read_csv(reference_file)
-    # reference_notnull = reference_df[reference_df[reference_key].notna() & (reference_df[reference_key] != '')]
-    #
-    # # Limit reference DataFrame to specified columns
-    # reference_notnull = reference_notnull[[reference_key, reference_addition]]
-    #
-    # # Merge non-null DataFrames
-    # merged_df = pd.merge(keep_notnull, reference_notnull, left_on=keep_key, right_on=reference_key, how='left')
-    #
-    # # Remove the duplicate column from the merge, but keep the normalized_curie
-    # merged_df = merged_df.drop(columns=[reference_key])
-    #
-    # # Add back null rows from keep file
-    # final_df = pd.concat([merged_df, keep_null], ignore_index=True)
-    #
-    # # Save the merged file
-    # # final_df.to_csv(merged_file, index=False)
-    #
-    # click.echo(f"Merged file saved to {merged_file}")
+    click.echo(f"Merged file saved to {merged_file}")
 
 
 def process_file(input_file: str, key_column: str, file_type: str) -> Tuple[
@@ -129,6 +108,16 @@ def split_dataframe(df: pd.DataFrame, key_column: str) -> Tuple[pd.DataFrame, pd
     df_null = df[df[key_column].isna() | (df[key_column] == '')]
 
     return df_notnull, df_null
+
+
+def jaccard_distance(s1: Optional[str], s2: Optional[str]) -> Optional[float]:
+    """Calculate Jaccard distance between two strings."""
+    if not s1 or not s2:
+        return None
+    set1, set2 = set(s1.split()), set(s2.split())
+    intersection = len(set1.intersection(set2))
+    union = len(set1.union(set2))
+    return 1 - (intersection / union) if union != 0 else 1
 
 
 if __name__ == '__main__':
