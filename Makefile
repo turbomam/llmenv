@@ -177,6 +177,7 @@ biome_minus_aquatic_runoak.tsv:
 
 clean: clean-intermediates
 	rm -rf *.csv *.owl *.ttl *.ofn *.json
+	rm -rf envo_info.txt
 
 clean-intermediates:
 	#mv filename-to-content-prompt-specification.yaml filename-to-content-prompt-specification.yaml.keep
@@ -261,11 +262,11 @@ ncbi_biosamples_context_value_counts_failures.csv: ncbi_biosamples_context_value
 		--input-file $< \
 		--output-file $@
 
-ncbi_biosamples_context_value_counts_real_labels.csv:
+ncbi_biosamples_context_value_counts_real_labels.csv: ncbi_biosamples_context_value_counts_normalized.csv envo_info.csv
 	$(RUN) python merge_in_reference_data.py \
-		--keep-file ncbi_biosamples_context_value_counts_normalized.csv \
+		--keep-file $(word 1,$^) \
 		--keep-key normalized_curie \
-		--reference-file envo_info.csv \
+		--reference-file $(word 2,$^) \
 		--reference-key normalized_curie \
 		--reference-addition normalized_label \
 		--addition-rename real_label \
