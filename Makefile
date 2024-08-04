@@ -271,3 +271,14 @@ ncbi_biosamples_context_value_counts_real_labels.csv: ncbi_biosamples_context_va
 		--reference-addition normalized_label \
 		--addition-rename real_label \
 		--merged-file $@
+
+ncbi_biosamples_context_value_counts_real_labels_only_annotated.csv: ncbi_biosamples_context_value_counts_real_labels.csv
+	date ; $(RUN) runoak \
+		--input sqlite:obo:envo annotate \
+		--matches-whole-text \
+		--output-type csv \
+		--output $@ \
+		--text-file $< \
+		--match-column normalized_label ; date
+
+
