@@ -172,12 +172,25 @@ envo_info.csv: envo_info.txt
 			--ontology-prefix ENVO \
 			--output-file $@
 
+biome_info.txt:
+	$(RUN) runoak --input sqlite:obo:envo info  .desc//p=i ENVO:00000428 > $@
+
+#biome_info.csv: biome_info.txt
+#	sed 's/ \! /,/g' $< > $@
+
+environmental_material_info.txt:
+	$(RUN) runoak --input sqlite:obo:envo info  .desc//p=i ENVO:00010483 > $@
+
+#environmental_material_info.csv: environmental_material_info.txt
+#	sed 's/ \! /,/g' $< > $@
+
+
 biome_minus_aquatic_runoak.tsv:
 	$(RUN) runoak --input sqlite:obo:envo info --output-type tsv  .desc//p=i ENVO:00000428 .not .desc//p=i ENVO:00002030  > $@
 
 clean: clean-intermediates
 	rm -rf *.csv *.owl *.ttl *.ofn *.json
-	rm -rf envo_info.txt
+	rm -rf envo_info.txt biome_info.txt environmental_material_info.txt
 
 clean-intermediates:
 	#mv filename-to-content-prompt-specification.yaml filename-to-content-prompt-specification.yaml.keep
@@ -281,4 +294,39 @@ ncbi_biosamples_context_value_counts_real_labels_only_annotated.csv: ncbi_biosam
 		--text-file $< \
 		--match-column normalized_label ; date
 
+ncbi_biosamples_context_value_counts_real_labels_only_annotated_1.csv: biome_info.txt \
+ncbi_biosamples_context_value_counts_real_labels_only_annotated.csv
+	$(RUN) python detect_curies_in_subset.py \
+		--tsv-file $(word 2,$^) \
+		--class-info-file $(word 1,$^)  \
+		--tsv-column-name normalized_curie \
+		--subset-label biome \
+		--output-file $@
+
+ncbi_biosamples_context_value_counts_real_labels_only_annotated_2.csv: biome_info.txt \
+ncbi_biosamples_context_value_counts_real_labels_only_annotated_1.csv
+	$(RUN) python detect_curies_in_subset.py \
+		--tsv-file $(word 2,$^) \
+		--class-info-file $(word 1,$^)  \
+		--tsv-column-name matched_id \
+		--subset-label biome \
+		--output-file $@
+
+ncbi_biosamples_context_value_counts_real_labels_only_annotated_3.csv: environmental_material_info.txt \
+ncbi_biosamples_context_value_counts_real_labels_only_annotated_2.csv
+	$(RUN) python detect_curies_in_subset.py \
+		--tsv-file $(word 2,$^) \
+		--class-info-file $(word 1,$^)  \
+		--tsv-column-name normalized_curie \
+		--subset-label environmental_material \
+		--output-file $@
+
+ncbi_biosamples_context_value_counts_real_labels_only_annotated_4.csv: environmental_material_info.txt \
+ncbi_biosamples_context_value_counts_real_labels_only_annotated_3.csv
+	$(RUN) python detect_curies_in_subset.py \
+		--tsv-file $(word 2,$^) \
+		--class-info-file $(word 1,$^)  \
+		--tsv-column-name matched_id \
+		--subset-label environmental_material \
+		--output-file $@
 
