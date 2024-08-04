@@ -330,3 +330,32 @@ ncbi_biosamples_context_value_counts_real_labels_only_annotated_3.csv
 		--subset-label environmental_material \
 		--output-file $@
 
+detected_annotations_to_postgres: ncbi_biosamples_context_value_counts_real_labels_only_annotated_4.csv
+	$(RUN) python load_tsv_into_postgres.py \
+	--tsv-file $< \
+	--table-name detected_annotations
+
+packages_counts.tsv: packages_counts.sql
+	$(RUN) python sql_to_tsv.py \
+	--sql-file $< \
+	--output-file $@
+
+ncbi_packages.xml:
+	wget -O $@ https://www.ncbi.nlm.nih.gov/biosample/docs/packages/?format=xml
+
+ncbi_packages.csv: ncbi_packages.xml
+	$(RUN) python ncbi-packages_csv_report.py \
+	--xml_file $< \
+	--output_file $@
+
+soil_water_env_broad_scale.tsv: soil_water_env_broad_scale.sql
+	$(RUN) python sql_to_tsv.py \
+	--sql-file $< \
+	--output-file $@
+
+soil_water_env_broad_scale_or-ed.tsv: soil_water_env_broad_scale.tsv
+	$(RUN) python or_boolean_columns.py \
+		--input_file $< \
+		--output_file $@ \
+		--column1 "normalized_curie_biome" \
+		--column2 "matched_id_biome"
