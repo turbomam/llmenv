@@ -1,0 +1,229 @@
+{
+  "name" : "143",
+  "accession" : "SAMEA104726483",
+  "sraAccession" : "ERS2327866",
+  "webinSubmissionAccountId" : "Webin-47334",
+  "taxId" : 410658,
+  "status" : "PUBLIC",
+  "release" : "2019-12-03T04:05:33Z",
+  "update" : "2024-02-06T14:37:13.897Z",
+  "submitted" : "2018-03-29T22:54:22Z",
+  "characteristics" : {
+    "DNA concentration" : [ {
+      "text" : "6.12",
+      "tag" : "attribute"
+    } ],
+    "ENA-CHECKLIST" : [ {
+      "text" : "ERC000022",
+      "tag" : "attribute"
+    } ],
+    "ENA-FIRST-PUBLIC" : [ {
+      "text" : "2019-12-03T04:05:33Z",
+      "tag" : "attribute"
+    } ],
+    "ENA-LAST-UPDATE" : [ {
+      "text" : "2018-03-29T22:54:22Z",
+      "tag" : "attribute"
+    } ],
+    "External Id" : [ {
+      "text" : "SAMEA104726483",
+      "tag" : "Namespace:BioSample"
+    } ],
+    "INSDC center name" : [ {
+      "text" : "INSTITUTE FOR GENOME SCIENCES, UNIVERSITY OF MARYLAND SCHOOL OF MEDICINE"
+    } ],
+    "INSDC first public" : [ {
+      "text" : "2019-12-03T04:05:33Z"
+    } ],
+    "INSDC last update" : [ {
+      "text" : "2018-03-29T22:54:22Z"
+    } ],
+    "INSDC status" : [ {
+      "text" : "public"
+    } ],
+    "SRA accession" : [ {
+      "text" : "ERS2327866"
+    } ],
+    "Submitter Id" : [ {
+      "text" : "143",
+      "tag" : "Namespace:INSTITUTE FOR GENOME SCIENCES, UNIVERSITY OF MARYLAND SCHOOL OF MEDICINE"
+    } ],
+    "amount or size of sample collected" : [ {
+      "text" : "50",
+      "unit" : "L",
+      "tag" : "attribute"
+    } ],
+    "collection date" : [ {
+      "text" : "2016-06-15",
+      "tag" : "attribute"
+    } ],
+    "common name" : [ {
+      "text" : "soil metagenome",
+      "ontologyTerms" : [ "http://purl.obolibrary.org/obo/NCBITaxon_410658" ]
+    } ],
+    "current land use (emp 500 soil)" : [ {
+      "text" : "sand",
+      "tag" : "attribute"
+    } ],
+    "description" : [ {
+      "text" : "metagenome from Crete soil"
+    } ],
+    "environment (biome)" : [ {
+      "text" : "terrestrial biome",
+      "tag" : "attribute"
+    } ],
+    "environment (feature)" : [ {
+      "text" : "microcontinental island",
+      "tag" : "attribute"
+    } ],
+    "environment (material)" : [ {
+      "text" : "soil",
+      "tag" : "attribute"
+    } ],
+    "geographic location (country and/or sea)" : [ {
+      "text" : "Greece",
+      "tag" : "attribute"
+    } ],
+    "geographic location (depth)" : [ {
+      "text" : "5 cm",
+      "unit" : "m",
+      "tag" : "attribute"
+    } ],
+    "geographic location (elevation)" : [ {
+      "text" : "5",
+      "unit" : "m",
+      "tag" : "attribute"
+    } ],
+    "geographic location (latitude)" : [ {
+      "text" : "35.058",
+      "unit" : "DD",
+      "tag" : "attribute"
+    } ],
+    "geographic location (longitude)" : [ {
+      "text" : "26.2422778",
+      "unit" : "DD",
+      "tag" : "attribute"
+    } ],
+    "geographic location (region and locality)" : [ {
+      "text" : "Crete, Lassithi",
+      "tag" : "attribute"
+    } ],
+    "investigation type" : [ {
+      "text" : "metagenome",
+      "tag" : "attribute"
+    } ],
+    "organism" : [ {
+      "text" : "soil metagenome",
+      "ontologyTerms" : [ "" ]
+    } ],
+    "pcr primers" : [ {
+      "text" : "FWD: 5'-ACTCCTACGGGAGGCAGCAG-3' REV: 5'-GGACTACHVGGGTWTCTAAT-3'",
+      "tag" : "attribute"
+    } ],
+    "place name" : [ {
+      "text" : "Katsounaki",
+      "tag" : "attribute"
+    } ],
+    "project name" : [ {
+      "text" : "CRETE_SOIL: 16S amplicon sequences of Crete soil meta genomes",
+      "tag" : "attribute"
+    } ],
+    "sample collection device or method" : [ {
+      "text" : "15x2.2 cm metal soil core sampler",
+      "tag" : "attribute"
+    } ],
+    "sample volume or weight for DNA extraction" : [ {
+      "text" : "0.249",
+      "unit" : "g",
+      "tag" : "attribute"
+    } ],
+    "scientific_name" : [ {
+      "text" : "soil metagenome",
+      "ontologyTerms" : [ "" ]
+    } ],
+    "sequencing method" : [ {
+      "text" : "Illumina HiSeq 2500",
+      "ontologyTerms" : [ "http://www.ebi.ac.uk/efo/EFO_0008565" ],
+      "tag" : "attribute"
+    } ],
+    "soil environmental package" : [ {
+      "text" : "soil",
+      "tag" : "attribute"
+    } ],
+    "source material identifiers" : [ {
+      "text" : "isd_10_site_2_loc_1",
+      "tag" : "attribute"
+    } ],
+    "storage conditions (fresh/frozen/other)" : [ {
+      "text" : "dry ice during sample and transport, storage -80 freezer",
+      "tag" : "attribute"
+    } ],
+    "target gene" : [ {
+      "text" : "16S rRNA",
+      "tag" : "attribute"
+    } ],
+    "target subfragment" : [ {
+      "text" : "V3, V4",
+      "tag" : "attribute"
+    } ],
+    "title" : [ {
+      "text" : "Crete soil metagenome"
+    } ],
+    "total nitrogen" : [ {
+      "text" : "0",
+      "unit" : "µg/L",
+      "tag" : "attribute"
+    } ],
+    "total nitrogen method" : [ {
+      "text" : "DOI: 10.1080/0010362930936892",
+      "tag" : "attribute"
+    } ],
+    "total organic C method" : [ {
+      "text" : "DOI:10.1080/00103629309368926",
+      "tag" : "attribute"
+    } ],
+    "total organic carbon" : [ {
+      "text" : "81.4",
+      "unit" : "g/kg",
+      "tag" : "attribute"
+    } ],
+    "vegetation zone" : [ {
+      "text" : "coastal and littoral",
+      "tag" : "attribute"
+    } ],
+    "water content" : [ {
+      "text" : "0.1375",
+      "unit" : "cm3/cm3",
+      "tag" : "attribute"
+    } ],
+    "water content method" : [ {
+      "text" : "DOI:10.2136/sssabookser5.1.2ed.c21",
+      "tag" : "attribute"
+    } ]
+  },
+  "externalReferences" : [ {
+    "url" : "https://www.ebi.ac.uk/ena/browser/view/SAMEA104726483",
+    "duo" : [ ]
+  } ],
+  "submittedVia" : "PIPELINE_IMPORT",
+  "create" : "2019-12-04T03:48:27.591Z",
+  "_links" : {
+    "self" : {
+      "href" : "https://www.ebi.ac.uk/biosamples/samples/SAMEA104726483"
+    },
+    "curationDomain" : {
+      "href" : "https://www.ebi.ac.uk/biosamples/samples/SAMEA104726483{?curationdomain}",
+      "templated" : true
+    },
+    "curationLinks" : {
+      "href" : "https://www.ebi.ac.uk/biosamples/samples/SAMEA104726483/curationlinks"
+    },
+    "curationLink" : {
+      "href" : "https://www.ebi.ac.uk/biosamples/samples/SAMEA104726483/curationlinks/{hash}",
+      "templated" : true
+    },
+    "structuredData" : {
+      "href" : "https://www.ebi.ac.uk/biosamples/structureddata/SAMEA104726483"
+    }
+  }
+}
